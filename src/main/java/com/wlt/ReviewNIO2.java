@@ -34,7 +34,9 @@ public class ReviewNIO2 {
         System.out.println(absolutePath);
         System.out.println("absolutePath的根路径： "+absolutePath.getRoot());
         System.out.println("absolutePath里包含的路径数量：" + absolutePath.getNameCount());
-        System.out.println(absolutePath.getName(2));
+        for(int i =0,l=absolutePath.getNameCount();i<l;i++){
+            System.out.println(absolutePath.getName(i));
+        }
         //以多个String来构建path
         Path path2 = Paths.get("g:", "publish" , "codes");
         System.out.println(path2);
@@ -43,20 +45,20 @@ public class ReviewNIO2 {
     public void files() throws IOException{
         //将传统io读写文件高度封装之后，在NIO.2中拷贝文件只需要调用File工具类的copy()方法
         Files.copy(Paths.get("pom.xml"), new FileOutputStream("tmp2.txt"));
-//是否为隐藏文件
+        //是否为隐藏文件
         System.out.println("pom.xml是否为隐藏文件: "+ Files.isHidden(Paths.get("pom.xml")));
-//一次性读取所有行 , 需要指定编码规则
+        //一次性读取所有行 , 需要指定编码规则
         List<String> lines = Files.readAllLines(Paths.get("pom.xml"), Charset.forName("utf-8"));
         System.out.println(lines);
         for (String line:lines) {
             System.out.println(line);
         }
-//文件大小
+        //文件大小
         System.out.println("tmp.txt文件大小为： "+Files.size(Paths.get("pom.xml")));
         List<String> poem = new ArrayList<>();
         poem.add("海阔凭鱼跃");
         poem.add("天高任鸟飞");
-//直接将字符串数组写入文件
+        //直接将字符串数组写入文件
         Files.write(Paths.get("tmp3.txt"), poem, Charset.forName("utf-8"));
     }
 }
