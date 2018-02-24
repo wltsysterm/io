@@ -81,6 +81,9 @@ public class ReviewFile
         String[] nameList = file.list(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
+                System.out.print(dir.getAbsolutePath());
+                System.out.print("===");
+                System.out.println(name);
                 return name.endsWith(".txt") || new File(name).isDirectory();
             }
         });
