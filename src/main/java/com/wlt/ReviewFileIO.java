@@ -14,11 +14,10 @@ import java.util.Date;
 public class ReviewFileIO {
     @Test
     public void fileinputstream() throws IOException{
-
+        System.out.println();
         try (FileInputStream fileInputStream = new FileInputStream("./pom.xml")){
             byte[] buf = new byte[1024];
             int hasRead = 0;
-            // 每个char都占两个字节，每个字符或者汉字都是占2个字节，因此无论buf长度为多少，总是能读取中文字符长度的整数倍,不会乱码
             while ((hasRead = fileInputStream.read(buf)) > 0) {
                 System.out.print(new String(buf, 0, hasRead));
             }
@@ -39,6 +38,7 @@ public class ReviewFileIO {
         try (FileReader fileReader = new FileReader("./pom.xml")){
             char[] chars = new char[32];
             int hasRead = 0;
+            // 每个char都占两个字节，每个字符或者汉字都是占2个字节，因此无论buf长度为多少，总是能读取中文字符长度的整数倍,不会乱码
             while ((hasRead = fileReader.read(chars)) > 0) {
                 System.out.print(new String(chars, 0, hasRead));
             }
@@ -86,6 +86,7 @@ public class ReviewFileIO {
         if (!file.exists()) {
             file.createNewFile();
         }
+
         try (FileWriter fw = new FileWriter(file)) {
             fw.write("天王盖地虎\r\n");
             fw.write("宝塔镇河妖\r\n");

@@ -21,6 +21,7 @@ public class ReviewObject {
     @Test
     public void objectinputstream() throws IOException, ClassNotFoundException {
         try (
+                //确保下面的filename所指向的文件存在，否则报错
                 ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("objectoutputstream.txt"));
                 ) {
             Seriable seriable = (Seriable) objectInputStream.readObject();

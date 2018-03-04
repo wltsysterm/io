@@ -84,6 +84,7 @@ public class ReviewFile
                 System.out.print(dir.getAbsolutePath());
                 System.out.print("===");
                 System.out.println(name);
+                System.out.println("accept name测试："+new File(name).getAbsolutePath());
                 return name.endsWith(".txt") || new File(name).isDirectory();
             }
         });

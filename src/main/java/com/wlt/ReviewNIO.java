@@ -2,13 +2,11 @@ package com.wlt;
 
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.CharBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.channels.Pipe;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 
@@ -22,7 +20,7 @@ public class ReviewNIO {
         //创建Buffer
         CharBuffer charBuffer = CharBuffer.allocate(10);
         System.out.println("长度："+charBuffer.length());
-        System.out.println("上线："+charBuffer.limit());
+        System.out.println("上限："+charBuffer.limit());
         System.out.println("容量："+charBuffer.capacity());
         System.out.println("当前位置："+charBuffer.position());
         //放入元素
